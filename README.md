@@ -84,7 +84,6 @@
         <h1>Certificates & Nanodegrees</h1>
         <p>Selected credentials with grades and verification links.</p>
       </div>
-      <div class="note">Tip: You can drop this file into your GitHub Pages repo as <code>index.html</code> or embed the sections in your Jekyll page.</div>
     </header>
 
     <!-- Coursera Specializations -->
