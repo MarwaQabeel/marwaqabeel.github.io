@@ -14,14 +14,110 @@
   <link rel="icon" href="/assets/favicon.ico" />
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
 
   <style>
-    :root{--bg:#0b1220;--panel:#101a31;--panel-2:#0e162b;--text:#eaf0ff;--muted:#b6c1e2;--accent:#7aa2ff;--accent-2:#8ee2ff;--ring:rgba(122,162,255,.35);--ok:#47d17e;--shadow:0 10px 24px rgba(5,15,40,.55),0 4px 10px rgba(0,0,0,.25)}
-    html,body{margin:0} html{scroll-behavior:smooth}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;background:linear-gradient(180deg,#0a1020 0%,#0c1425 60%,#0a0f20 100%);color:var(--text);-webkit-font-smoothing:antialiased}
-    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+/* ===== Palette + Typography (Overrides) ===== */
+:root{
+  /* Dark neutrals */
+  --bg:#0a0f1e;
+  --panel:#0e172a;      /* slate-900-ish */
+  --panel-2:#0b1325;
+  --text:#e8eef9;       /* ≥4.5:1 on --panel */
+  --muted:#a2b3d3;
+
+  /* Brand accents (Indigo → Cyan) */
+  --accent:#7c9dff;     /* indigo-400 */
+  --accent-2:#22d3ee;   /* cyan-400 */
+  --ring:rgba(124,157,255,.45);
+  --ok:#22c55e;         /* success */
+  --warn:#f59e0b;       /* warning */
+  --danger:#ef4444;     /* error */
+
+  /* Shadows */
+  --shadow:0 12px 26px rgba(5,15,40,.55),0 6px 16px rgba(0,0,0,.28);
+
+  /* Fonts */
+  --font-sans: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Space Grotesk", Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+  --font-ar: "Cairo", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Global type */
+body{font-family:var(--font-sans)}
+h1,h2,h3,.brand{font-family:var(--font-display);letter-spacing:-.02em}
+:lang(ar), [lang="ar"]{font-family:var(--font-ar)}
+
+/* Brand gradient text (used by .brand .grad) */
+.grad{
+  background:linear-gradient(90deg,var(--accent) 0%,var(--accent-2) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+
+/* Links */
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--accent-2);text-decoration:none}
+a:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
+
+/* Buttons */
+.btn{
+  background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 22%, transparent), color-mix(in oklab, var(--accent-2) 16%, transparent));
+  border:1px solid color-mix(in oklab, var(--accent) 55%, black);
+  box-shadow:0 2px 0 rgba(0,0,0,.25);
+}
+.btn:hover{
+  transform:translateY(-1px);
+  border-color: color-mix(in oklab, var(--accent-2) 65%, black);
+  box-shadow:0 10px 24px rgba(10,30,70,.35)
+}
+
+/* Quicklinks */
+.quicklinks a{
+  border-color:rgba(255,255,255,.16);
+  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+}
+.quicklinks a.primary{
+  border-color: color-mix(in oklab,var(--accent) 65%, black);
+  background:linear-gradient(180deg, color-mix(in oklab,var(--accent) 25%, transparent), color-mix(in oklab,var(--accent-2) 15%, transparent));
+}
+
+/* Cards */
+.card{
+  background:linear-gradient(180deg,var(--panel),var(--panel-2));
+  border:1px solid rgba(255,255,255,.07);
+  box-shadow:var(--shadow);
+}
+.card .hd .name{font-weight:700}
+.card .hd .org{color:var(--muted)}
+
+/* Chips + badges */
+.chip{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.14);
+}
+.badge{
+  color:#042016;
+  background:linear-gradient(180deg, color-mix(in oklab, var(--ok) 85%, white), var(--ok));
+  border:1px solid rgba(0,0,0,.2);
+}
+
+/* Role pill & scroll indicator refinement */
+.role{color:color-mix(in oklab,var(--muted) 92%, white)}
+.scroll-indicator{border-color:rgba(255,255,255,.22)}
+.scroll-indicator svg{color:var(--muted)}
+
+/* Focus visibility for keyboard users */
+:focus-visible{outline:2px solid var(--ring);outline-offset:2px;border-radius:10px}
+
+/* Social icons tint */
+.social svg{color:color-mix(in oklab,var(--muted) 88%, white)}
+
+/* Optional: stronger brand in navbar */
+.topnav{background:rgba(9,14,30,.55);backdrop-filter:saturate(140%) blur(10px)}
+.topnav a.active{border-bottom:2px solid var(--accent-2)}
+
 
     /* Nav */
     .topnav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(10px);background:rgba(9,14,30,.55);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;padding:10px 16px}
