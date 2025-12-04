@@ -14,14 +14,12 @@
   <link rel="icon" href="/assets/favicon.ico" />
 
   <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Cairo:wght@400;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Cairo:wght@400;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
 /* ===== Design Tokens ===== */
 :root{
-  /* Neutrals (keep your dark look) */
+  /* Neutrals */
   --bg:#0a0f1e;
   --panel:#0e172a;
   --panel-2:#0b1325;
@@ -51,74 +49,6 @@
   --font-ar:"Cairo", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* HERO background glow uses palette (c5) */
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  overflow:hidden;
-  background:
-    radial-gradient(
-      1200px 1200px at 50% -10%,
-      rgba(128,166,224,.18), /* c5 with alpha */
-      transparent 60%
-    );
-}
-
-/* Gradient text for brand using c2 → c3 */
-.grad{
-  background:linear-gradient(90deg,var(--c2) 0%,var(--c3) 100%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-
-/* CTAs and quick links use palette for borders and gradient */
-.btn,
-.quicklinks a{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:10px 14px;
-  border-radius:12px;
-  color:var(--text);
-  border:1px solid rgba(255,255,255,.16);
-  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
-  font-weight:600;
-}
-
-.quicklinks a.primary,
-.btn{
-  border-color:rgba(18,162,219,.55); /* c2 */
-  background:
-    linear-gradient(
-      180deg,
-      rgba(18,162,219,.22), /* c2 */
-      rgba(18,219,213,.16)  /* c3 */
-    );
-}
-
-.btn:hover,
-.quicklinks a.primary:hover{
-  transform:translateY(-1px);
-  box-shadow:0 10px 24px rgba(10,30,70,.35);
-}
-
-/* Badges use green + mint from palette */
-.badge{
-  font-size:12px;
-  font-weight:700;
-  color:#06230f;
-  background:linear-gradient(180deg,var(--c1),var(--c4)); /* #12DB90 → #12DB4C */
-  border:1px solid rgba(0,0,0,.15);
-  padding:4px 8px;
-  border-radius:999px;
-  white-space:nowrap;
-}
-
-
 /* ===== Base ===== */
 html,body{margin:0}
 html{scroll-behavior:smooth}
@@ -134,10 +64,12 @@ a{color:var(--accent);text-decoration:none}
 a:hover{color:var(--accent-2);text-decoration:none}
 :focus-visible{outline:2px solid var(--ring);outline-offset:2px;border-radius:10px}
 
-/* Gradient text for brand */
+/* Gradient text for brand using palette */
 .grad{
-  background:linear-gradient(90deg,var(--accent) 0%,var(--accent-2) 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent
+  background:linear-gradient(90deg,var(--c2) 0%,var(--c3) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 }
 
 /* ===== Nav ===== */
@@ -166,10 +98,19 @@ a:hover{color:var(--accent-2);text-decoration:none}
 
 /* ===== Hero ===== */
 .hero{
-  min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
-  /* safe fallback + brand tint */
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  /* palette-based glow using c5 */
   background:
-    radial-gradient(1200px 1200px at 50% -10%, rgba(124,157,255,.12), transparent 60%)
+    radial-gradient(
+      1200px 1200px at 50% -10%,
+      rgba(128,166,224,.18),
+      transparent 60%
+    );
 }
 .hero .rings{position:absolute;inset:-10% -10% auto -10%;pointer-events:none;opacity:.7}
 .hero .rings span{position:absolute;border:1px solid rgba(255,255,255,.16);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%)}
@@ -221,11 +162,19 @@ h1{font-size:56px;line-height:1.05;margin:6px 0 10px}
 .list{display:grid;gap:8px;margin:12px 0 2px;padding:0;list-style:none}
 .list li{display:flex;justify-content:space-between;align-items:center;gap:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 12px}
 .course{font-weight:600}
+
+/* Badges use palette green tones */
 .badge{
-  font-size:12px;font-weight:700;color:#06230f;
-  background:linear-gradient(180deg,#6cf3a2,#38d878);
-  border:1px solid rgba(0,0,0,.15);padding:4px 8px;border-radius:999px;white-space:nowrap
+  font-size:12px;
+  font-weight:700;
+  color:#06230f;
+  background:linear-gradient(180deg,var(--c1),var(--c4)); /* #12DB90 → #12DB4C */
+  border:1px solid rgba(0,0,0,.15);
+  padding:4px 8px;
+  border-radius:999px;
+  white-space:nowrap;
 }
+
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .chip{font-size:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:4px 8px;border-radius:999px}
 .bullets{margin:10px 0 0 18px;color:var(--muted)}
@@ -234,27 +183,35 @@ h1{font-size:56px;line-height:1.05;margin:6px 0 10px}
 @media(min-width:1000px){.card--third{grid-column:span 4}}
 footer{margin-top:36px;color:var(--muted);font-size:14px}
 
-/* ===== CTAs (Buttons/Links) — unified with brand ===== */
+/* ===== CTAs (Buttons/Links) — now using palette ===== */
 .btn,
 .quicklinks a{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:10px 14px;border-radius:12px;color:var(--text);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:12px;
+  color:var(--text);
   border:1px solid rgba(255,255,255,.16);
   background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
-  font-weight:600
+  font-weight:600;
 }
+
 .quicklinks a.primary,
 .btn{
-  border-color:rgba(124,157,255,.55); /* ties to --accent */
+  border-color:rgba(18,162,219,.55); /* c2 */
   background:
-    linear-gradient(180deg,
-      rgba(124,157,255,.22),
-      rgba(34,211,238,.14)); /* accent → accent-2 */
+    linear-gradient(
+      180deg,
+      rgba(18,162,219,.22), /* c2 */
+      rgba(18,219,213,.16)  /* c3 */
+    );
 }
+
 .btn:hover,
 .quicklinks a.primary:hover{
   transform:translateY(-1px);
-  box-shadow:0 10px 24px rgba(10,30,70,.35)
+  box-shadow:0 10px 24px rgba(10,30,70,.35);
 }
 
 /* ===== Accessibility tweaks ===== */
@@ -324,7 +281,7 @@ a:focus-visible,.btn:focus-visible,.chip:focus-visible{outline:2px solid var(--a
       <p>Georgia Tech OMSCS (’26). Udacity Independent Consultant (4.8/5 CSAT across 100+ sessions). I design, train, and evaluate ML pipelines (Python, PyTorch, scikit-learn) and care about production ML, MLOps, and A/B testing.</p>
     </section>
 
-    <!-- Skills (expanded) -->
+    <!-- Skills -->
     <section id="skills" class="section">
       <h2>Skills</h2>
       <div class="grid">
@@ -433,7 +390,7 @@ a:focus-visible,.btn:focus-visible,.chip:focus-visible{outline:2px solid var(--a
       </div>
     </section>
 
-    <!-- Projects (unchanged core cards) -->
+    <!-- Projects -->
     <section id="projects" class="section">
       <h2>Featured Projects</h2>
       <div class="grid">
@@ -499,12 +456,16 @@ a:focus-visible,.btn:focus-visible,.chip:focus-visible{outline:2px solid var(--a
       </div>
     </section>
 
-    <!-- Certificates (as before) -->
+    <!-- Certificates -->
     <section id="certificates" class="section">
       <h2>Certificates & Nanodegrees</h2>
       <div class="grid">
         <article class="card card--half">
-          <div class="hd"><div><div class="name">Data Structures and Algorithms Specialization</div><div class="org">UC San Diego</div></div>
+          <div class="hd">
+            <div>
+              <div class="name">Data Structures and Algorithms Specialization</div>
+              <div class="org">UC San Diego</div>
+            </div>
             <a class="btn" href="https://coursera.org/share/3d915db4303a0b4b5b54d313df7f2eb4" target="_blank" rel="noopener">Certificate</a>
           </div>
           <div class="body">
@@ -520,7 +481,11 @@ a:focus-visible,.btn:focus-visible,.chip:focus-visible{outline:2px solid var(--a
         </article>
 
         <article class="card card--half">
-          <div class="hd"><div><div class="name">Discrete Mathematics for CS</div><div class="org">UC San Diego</div></div>
+          <div class="hd">
+            <div>
+              <div class="name">Discrete Mathematics for CS</div>
+              <div class="org">UC San Diego</div>
+            </div>
             <a class="btn" href="https://coursera.org/share/576f499c1ff93fa479f077e604ac1e2b" target="_blank" rel="noopener">Certificate</a>
           </div>
           <div class="body">
@@ -538,12 +503,30 @@ a:focus-visible,.btn:focus-visible,.chip:focus-visible{outline:2px solid var(--a
       <div class="section">
         <h2>Udacity Nanodegree Programs</h2>
         <div class="grid">
-          <article class="card card--third"><div class="hd"><div><div class="name">Data Structures & Algorithms</div><div class="org">Udacity</div></div></div><div class="body"><a class="btn" href="https://github.com/MarwaQabeel/Data-Structures-and-Algorithms-Nanodegree" target="_blank" rel="noopener">Projects & Certificate</a></div></article>
-          <article class="card card--third"><div class="hd"><div><div class="name">Deep Learning</div><div class="org">Udacity</div></div></div><div class="body"><a class="btn" href="https://github.com/MarwaQabeel/Udacity-Deep-Learning-Nanodegree" target="_blank" rel="noopener">Projects & Certificate</a></div></article>
-          <article class="card card--third"><div class="hd"><div><div class="name">Computer Vision</div><div class="org">Udacity</div></div></div><div class="body"><a class="btn" href="https://github.com/MarwaQabeel/Udacity-Computer-Vision-Nanodegree" target="_blank" rel="noopener">Projects & Certificate</a></div></article>
-          <article class="card card--third"><div class="hd"><div><div class="name">Data Analyst</div><div class="org">Udacity</div></div></div><div class="body"><a class="btn" href="https://github.com/MarwaQabeel/Udacity-Data-Analyst-Nanodegree" target="_blank" rel="noopener">Projects & Certificate</a></div></article>
-          <article class="card card--third"><div class="hd"><div><div class="name">Data Foundations</div><div class="org">Udacity</div></div></div><div class="body"><a class="btn" href="https://github.com/MarwaQabeel/Udacity-Data-Foundations-Nanodegree" target="_blank" rel="noopener">Projects & Certificate</a></div></article>
-          <article class="card card--third"><div class="hd"><div><div class="name">Intro to Self-Driving Cars</div><div class="org">Udacity</div></div></div><div class="body"><a class="btn" href="https://confirm.udacity.com/YQSMPUQ2" target="_blank" rel="noopener">View Certificate</a></div></article>
+          <article class="card card--third">
+            <div class="hd"><div><div class="name">Data Structures & Algorithms</div><div class="org">Udacity</div></div></div>
+            <div class="body"><a class="btn" href="https://github.com/MarwaQabeel/Data-Structures-and-Algorithms-Nanodegree" target="_blank" rel="noopener">Projects & Certificate</a></div>
+          </article>
+          <article class="card card--third">
+            <div class="hd"><div><div class="name">Deep Learning</div><div class="org">Udacity</div></div></div>
+            <div class="body"><a class="btn" href="https://github.com/MarwaQabeel/Udacity-Deep-Learning-Nanodegree" target="_blank" rel="noopener">Projects & Certificate</a></div>
+          </article>
+          <article class="card card--third">
+            <div class="hd"><div><div class="name">Computer Vision</div><div class="org">Udacity</div></div></div>
+            <div class="body"><a class="btn" href="https://github.com/MarwaQabeel/Udacity-Computer-Vision-Nanodegree" target="_blank" rel="noopener">Projects & Certificate</a></div>
+          </article>
+          <article class="card card--third">
+            <div class="hd"><div><div class="name">Data Analyst</div><div class="org">Udacity</div></div></div>
+            <div class="body"><a class="btn" href="https://github.com/MarwaQabeel/Udacity-Data-Analyst-Nanodegree" target="_blank" rel="noopener">Projects & Certificate</a></div>
+          </article>
+          <article class="card card--third">
+            <div class="hd"><div><div class="name">Data Foundations</div><div class="org">Udacity</div></div></div>
+            <div class="body"><a class="btn" href="https://github.com/MarwaQabeel/Udacity-Data-Foundations-Nanodegree" target="_blank" rel="noopener">Projects & Certificate</a></div>
+          </article>
+          <article class="card card--third">
+            <div class="hd"><div><div class="name">Intro to Self-Driving Cars</div><div class="org">Udacity</div></div></div>
+            <div class="body"><a class="btn" href="https://confirm.udacity.com/YQSMPUQ2" target="_blank" rel="noopener">View Certificate</a></div>
+          </article>
         </div>
       </div>
     </section>
@@ -569,11 +552,13 @@ a:focus-visible,.btn:focus-visible,.chip:focus-visible{outline:2px solid var(--a
     (function(){
       const words=["Marwa","a Data Scientist","an AI Mentor","a cat-loving builder"];
       const el=document.getElementById('type'); let i=0,j=0,del=false;
-      function tick(){const w=words[i]; el.textContent=w.slice(0,j);
+      function tick(){
+        const w=words[i]; el.textContent=w.slice(0,j);
         if(!del && j<w.length){j++;return setTimeout(tick,80)}
         if(j===w.length && !del){del=true;return setTimeout(tick,1000)}
         if(del && j>0){j--;return setTimeout(tick,35)}
-        if(j===0){del=false;i=(i+1)%words.length;setTimeout(tick,200)}}
+        if(j===0){del=false;i=(i+1)%words.length;setTimeout(tick,200)}
+      }
       tick();
     })();
 
@@ -603,7 +588,10 @@ a:focus-visible,.btn:focus-visible,.chip:focus-visible{outline:2px solid var(--a
 
     // Footer date
     const el=document.getElementById('updated');
-    if(el){const d=new Date(),pad=n=>n.toString().padStart(2,'0'); el.textContent=`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;}
+    if(el){
+      const d=new Date(),pad=n=>n.toString().padStart(2,'0');
+      el.textContent=`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+    }
   </script>
 </body>
 </html>
