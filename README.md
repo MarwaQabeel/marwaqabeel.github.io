@@ -21,18 +21,26 @@
   <style>
 /* ===== Design Tokens ===== */
 :root{
-  /* Neutrals */
+  /* Neutrals (keep your dark look) */
   --bg:#0a0f1e;
   --panel:#0e172a;
   --panel-2:#0b1325;
   --text:#e8eef9;
   --muted:#a2b3d3;
 
-  /* Brand (Indigo → Cyan) */
-  --accent:#7c9dff;   /* indigo-400 */
-  --accent-2:#22d3ee; /* cyan-400 */
-  --ring:rgba(124,157,255,.45);
-  --ok:#22c55e;
+  /* Palette from your theme */
+  --c1:#12DB90; /* My-Color-Theme-1 */
+  --c2:#12A2DB; /* My-Color-Theme-2 */
+  --c3:#12DBD5; /* My-Color-Theme-3 */
+  --c4:#12DB4C; /* My-Color-Theme-4 */
+  --c5:#80A6E0; /* My-Color-Theme-5 */
+  --c6:#A8E1DF; /* My-Color-Theme-6 */
+
+  /* Brand mapping */
+  --accent:var(--c2);   /* main blue */
+  --accent-2:var(--c3); /* teal */
+  --ring:rgba(18,162,219,.45); /* focus ring from c2 */
+  --ok:var(--c4);       /* success green */
 
   /* Effects */
   --shadow:0 12px 26px rgba(5,15,40,.55),0 6px 16px rgba(0,0,0,.28);
@@ -42,6 +50,74 @@
   --font-display:"Space Grotesk", Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
   --font-ar:"Cairo", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
 }
+
+/* HERO background glow uses palette (c5) */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(
+      1200px 1200px at 50% -10%,
+      rgba(128,166,224,.18), /* c5 with alpha */
+      transparent 60%
+    );
+}
+
+/* Gradient text for brand using c2 → c3 */
+.grad{
+  background:linear-gradient(90deg,var(--c2) 0%,var(--c3) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+/* CTAs and quick links use palette for borders and gradient */
+.btn,
+.quicklinks a{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:12px;
+  color:var(--text);
+  border:1px solid rgba(255,255,255,.16);
+  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+  font-weight:600;
+}
+
+.quicklinks a.primary,
+.btn{
+  border-color:rgba(18,162,219,.55); /* c2 */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(18,162,219,.22), /* c2 */
+      rgba(18,219,213,.16)  /* c3 */
+    );
+}
+
+.btn:hover,
+.quicklinks a.primary:hover{
+  transform:translateY(-1px);
+  box-shadow:0 10px 24px rgba(10,30,70,.35);
+}
+
+/* Badges use green + mint from palette */
+.badge{
+  font-size:12px;
+  font-weight:700;
+  color:#06230f;
+  background:linear-gradient(180deg,var(--c1),var(--c4)); /* #12DB90 → #12DB4C */
+  border:1px solid rgba(0,0,0,.15);
+  padding:4px 8px;
+  border-radius:999px;
+  white-space:nowrap;
+}
+
 
 /* ===== Base ===== */
 html,body{margin:0}
